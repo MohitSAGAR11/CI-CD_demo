@@ -104,7 +104,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t session17-python:${{ github.sha }} .
+          docker build -t mohitsagar/hey-cicd:${{ github.sha }} -t mohitsagar/hey-cicd:latest .
 
   # ========================================
   # STEP 5 — Scan Docker Image for vulnerabilities
@@ -122,7 +122,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t session17-python:${{ github.sha }} .
+          docker build -t mohitsagar/hey-cicd:${{ github.sha }} -t mohitsagar/hey-cicd:latest .
 
       - name: Install Trivy
         run: |
@@ -135,7 +135,7 @@ jobs:
 
       - name: Scan image
         run: |
-          trivy image --severity HIGH,CRITICAL session17-python:${{ github.sha }}
+          trivy image --severity HIGH,CRITICAL mohitsagar/hey-cicd:${{ github.sha }}
 
   # ========================================
   # STEP 6 — Push image to Docker Hub
